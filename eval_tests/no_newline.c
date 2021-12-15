@@ -6,12 +6,13 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 21:56:44 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/15 22:48:18 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/15 22:58:45 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+#include <fcntl.h>
 
 int main(int argc, char **argv)
 {
