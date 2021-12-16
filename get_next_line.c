@@ -6,7 +6,7 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:00:43 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/15 16:06:48 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/16 11:49:22 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ static int	read_line(char *newline, const int fd, char **left, char **line)
 		{
 			if (ft_strlen(*line) > 0)
 				return (1);
-			if (left[fd])
-				ft_strdel(&left[fd]);
+			ft_strdel(&left[fd]);
 			ft_strdel(line);
 			return (read_bytes);
 		}
