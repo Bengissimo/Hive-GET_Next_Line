@@ -6,7 +6,7 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:00:43 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/16 11:49:22 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/18 23:51:59 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,6 @@ static int	seek_more_newline(char **remaining, char **line)
 		*line = ft_strdup(*remaining);
 		ft_strdel(remaining);
 	}
-	return (0);
-}
-
-static int	init_line(char **remaining, char **line)
-{
-	if (*remaining != NULL)
-	{		
-		if (seek_more_newline(remaining, line) == 1)
-			return (1);
-	}
-	else
-		*line = ft_strnew(1);
 	return (0);
 }
 
@@ -89,8 +77,15 @@ int	get_next_line(const int fd, char **line)
 	char		*newline;
 	static char	*left[FD_MAX];
 
-	if (init_line(&left[fd], line) == 1)
-		return (1);
+	if (fd < 0 || line == NULL)
+        return (-1);
+	if (left[fd] != NULL)
+	{		
+		if (seek_more_newline(&left[fd], line) == 1)
+			return (1);
+	}
+	else
+		*line = ft_strnew(1);
 	newline = NULL;
 	return (read_line(newline, fd, left, line));
 }
