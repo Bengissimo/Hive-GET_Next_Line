@@ -6,7 +6,7 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:06:41 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/08 14:27:01 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/19 21:27:31 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_atoi(const char *str)
 
 	rtrn = 0;
 	sign = 1;
-
 	while (*str == '\t' || *str == '\n' || *str == '\v'
 		|| *str == '\f' || *str == '\r' || *str == ' ')
 		str++;

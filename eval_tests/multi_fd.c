@@ -6,7 +6,7 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:15:22 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/15 22:44:16 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/18 23:28:25 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void gnl_print_free(int fd, char **line)
 	get_next_line(fd, line);
 	printf("%s\n", *line);
 	if (*line != NULL)
-		free(*line);
+		ft_strdel(line);
 }
 
 int	main(void)

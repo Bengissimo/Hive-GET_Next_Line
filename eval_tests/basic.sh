@@ -18,4 +18,5 @@ echo ----"Read and return two lines of 8 characters ending by newline included f
 ./test_gnl "8chars_2.txt"
 echo ----"Read and return any number of lines of 8 characters ending by newline included from a file"----------
 ./test_gnl "8chars_any.txt"
+#valgrind --leak-check=full ./test_gnl "8chars_2.txt"
 echo ----------------------------------------------------------------------------------------------------------------------------

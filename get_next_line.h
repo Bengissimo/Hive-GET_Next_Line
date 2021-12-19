@@ -6,15 +6,13 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:01:13 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/15 22:56:41 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/19 21:25:04 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <sys/types.h>
-# include <sys/uio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h" 

@@ -6,7 +6,7 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:00:43 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/18 23:51:59 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/19 22:13:51 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	seek_more_newline(char **remaining, char **line)
 	return (0);
 }
 
-static void	update_line(char **line, char buff[BUFF_SIZE + 1])
+static void	update_line(char **line, char *buff)
 {
 	char	*oldline;
 
@@ -44,12 +44,35 @@ static void	update_line(char **line, char buff[BUFF_SIZE + 1])
 	ft_strdel(&oldline);
 }
 
-static int	read_line(char *newline, const int fd, char **left, char **line)
+static int	get_newline(char **line, char *buff, char **left, const int fd)
+{
+	char	*newline;
+
+	newline = ft_strchr(buff, '\n');
+	if (newline)
+	{
+		*newline = '\0';
+		left[fd] = ft_strdup(newline + 1);
+		if (!left[fd])
+			return (-1);
+		update_line(line, buff);
+		if (!line)
+			return (-1);
+		return (1);
+	}
+	update_line(line, buff);
+	if (!line)
+		return (-1);
+	return (0);
+}
+
+static int	read_line(const int fd, char **left, char **line)
 {
 	char		buff[BUFF_SIZE + 1];
 	int			read_bytes;
+	int			got;
 
-	while (newline == NULL)
+	while (1)
 	{
 		read_bytes = read(fd, buff, BUFF_SIZE);
 		if (read_bytes == 0 || read_bytes == -1)
@@ -61,31 +84,25 @@ static int	read_line(char *newline, const int fd, char **left, char **line)
 			return (read_bytes);
 		}
 		buff[read_bytes] = '\0';
-		newline = ft_strchr(buff, '\n');
-		if (newline)
-		{
-			*newline = '\0';
-			left[fd] = ft_strdup(newline + 1);
-		}
-		update_line(line, buff);
+		got = get_newline(line, buff, left, fd);
+		if (got != 0)
+			return (got);
 	}
 	return (1);
 }
 
 int	get_next_line(const int fd, char **line)
 {
-	char		*newline;
 	static char	*left[FD_MAX];
 
 	if (fd < 0 || line == NULL)
-        return (-1);
+		return (-1);
 	if (left[fd] != NULL)
-	{		
+	{
 		if (seek_more_newline(&left[fd], line) == 1)
 			return (1);
 	}
 	else
 		*line = ft_strnew(1);
-	newline = NULL;
-	return (read_line(newline, fd, left, line));
+	return (read_line(fd, left, line));
 }
