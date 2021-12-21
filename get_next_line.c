@@ -6,7 +6,7 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:00:43 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/19 22:13:51 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/21 14:19:56 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	get_next_line(const int fd, char **line)
 {
 	static char	*left[FD_MAX];
 
-	if (fd < 0 || line == NULL)
+	if (fd < 0 || line == NULL || fd >= FD_MAX)
 		return (-1);
 	if (left[fd] != NULL)
 	{

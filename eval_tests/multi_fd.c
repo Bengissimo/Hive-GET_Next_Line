@@ -6,7 +6,7 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:15:22 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/18 23:28:25 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/20 15:41:21 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static void gnl_print_free(int fd, char **line)
 {
-	get_next_line(fd, line);
+	printf("return: %d\n", get_next_line(fd, line));
 	printf("%s\n", *line);
 	if (*line != NULL)
 		ft_strdel(line);
@@ -29,7 +29,7 @@ int	main(void)
 	int		fd2;
 	int		fd3;
 
-	fd1 = open("8chars_any.txt", O_RDONLY);
+	fd1 = open("empty.txt", O_RDONLY);
 
 	printf("fd1 8chars_any:\n");
 	gnl_print_free(fd1, &line);
