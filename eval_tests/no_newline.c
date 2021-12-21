@@ -6,7 +6,7 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 21:56:44 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/21 14:17:06 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/21 14:42:13 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,14 @@ int main(int argc, char **argv)
 	if(gnl != -1)
 	{
 		printf("fd: -1, line = NULL [ko]\n");
+		return (1);
+	}
+
+	gnl = get_next_line(-1, NULL);
+	printf("fd: 20000, returns: %d \n", gnl);
+	if(gnl != -1)
+	{
+		printf("fd: 20000 [ko]\n");
 		return (1);
 	}
 	return (0);
