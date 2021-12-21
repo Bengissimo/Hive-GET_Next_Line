@@ -6,7 +6,7 @@
 /*   By: bkandemi <bkandemi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 21:56:44 by bkandemi          #+#    #+#             */
-/*   Updated: 2021/12/21 14:42:13 by bkandemi         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:48:09 by bkandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	gnl = get_next_line(-1, NULL);
+	gnl = get_next_line(fd_huge, &line);
 	printf("fd: 20000, returns: %d \n", gnl);
 	if(gnl != -1)
 	{
